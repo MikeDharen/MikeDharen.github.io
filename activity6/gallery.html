@@ -69,6 +69,16 @@
         .social-icon:hover {
             color: #007bff;
         }
+
+        body[data-bs-theme="dark"] {
+            background: #333;
+            color: #f8f9fa;
+        }
+
+        body[data-bs-theme="light"] {
+            background: #f8f9fa;
+            color: #212529;
+        }
     </style>
 </head>
 
@@ -79,7 +89,7 @@
                 MDLuansing-Official site
                 <img src="images/verifiedcheck.png" alt="Verified Logo">
             </a>
-            <button class="btn btn-outline-secondary" onclick="changeMode()" type="submit">Mode</button>
+            <button class="btn btn-outline-secondary" id="btnMode" onclick="changeMode()" type="submit">Mode</button>
         </div>
     </nav>
 
@@ -251,10 +261,17 @@
 
         var colorMode = "light";
         function changeMode() {
-            var bodyElement = document.getElementById("body");
-            colorMode = colorMode == "dark" ? "light" : "dark";
-            bodyElement.setAttribute("data-bs-theme", colorMode);
+            if (colorMode == "light") {
+                document.getElementById("body").setAttribute("data-bs-theme", "dark");
+                document.getElementById("btnMode").innerHTML = "Light Mode";
+                colorMode = "dark";
+            } else {
+                document.getElementById("body").setAttribute("data-bs-theme", "light");
+                document.getElementById("btnMode").innerHTML = "Dark Mode";
+                colorMode = "light";
+            }
         }
+
     </script>
 </body>
 
